@@ -91,17 +91,15 @@ public class Runigram {
 	 */
 	public static Color[][] flippedHorizontally(Color[][] image) {
 		//// Replace the following statement with your code
-		for (int i = 0; i < image.length - 1; i++) {
-			int place = image[0].length - 1;
-			Color temp = image[i][place];
-			for (int j = 0; j < image[0].length / 2; j++) {
-				image[i][place] = image[i][j];
-				image[i][j] = temp;
-				place--;
-				temp = image[i][place];
+		int Rows = image.length;
+		int Cols = image[0].length;
+		Color[][] newColor = new Color[Rows][Cols];
+		for (int i = 0; i < Rows; i++) {
+			for (int j = 0; j < Cols; j++) {
+				newColor[i][j] = image[i][Cols - j - 1];
 			}
 		}
-		return image;
+		return newColor;
 	}
 
 	/**
@@ -109,17 +107,15 @@ public class Runigram {
 	 */
 	public static Color[][] flippedVertically(Color[][] image) {
 		//// Replace the following statement with your code
-		for (int j = 0; j < image[0].length - 1; j++) {
-			int place = image.length - 1;
-			Color temp = image[place][j];
-			for (int i = 0; i < image.length / 2; i++) {
-				image[place][j] = image[i][j];
-				image[i][j] = temp;
-				place--;
-				temp = image[place][j];
+		int Rows = image.length;
+		int Cols = image[0].length;
+		Color[][] newColor = new Color[Rows][Cols];
+		for (int i = 0; i < Rows; i++) {
+			for (int j = 0; j < Cols; j++) {
+				newColor[i][j] = image[Rows - i - 1][j];
 			}
 		}
-		return image;
+		return newColor;
 	}
 
 	// Computes the luminance of the RGB values of the given pixel, using the
@@ -129,9 +125,8 @@ public class Runigram {
 	// the three values r = lum, g = lum, b = lum.
 	public static Color luminance(Color pixel) {
 		//// Replace the following statement with your code
-		int lum = (int) (0.299 * pixel.getRed() + 0.587 * pixel.getGreen() + 0.114 * pixel.getBlue());
-		Color newcolor = new Color(lum, lum, lum);
-		return newcolor;
+		int lum = (int) (0.299 * pixel.getRed() + 0.587 * pixel.getGreen() + 0.114 * pixe.getBlue());
+		return new Color(lum, lum, lum);
 	}
 
 	/**
